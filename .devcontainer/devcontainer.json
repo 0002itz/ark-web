@@ -14,7 +14,10 @@
 			"settings": {},
 			"extensions": [
 				"WallabyJs.console-ninja",
-				"vscjava.vscode-java-pack"
+				"vscjava.vscode-java-pack",
+				"formulahendry.code-runner",
+				"YoavBls.pretty-ts-errors",
+				"astro-build.astro-vscode"
 			]
 		}
 
