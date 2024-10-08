@@ -1,3 +1,4 @@
+// En desuso....
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
@@ -30,8 +31,8 @@
 	//"features": {}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	//"forwardPorts": ["4321:80"]
-
+	"forwardPorts": [4321],
+	
 	"portsAttributes": {
 		"80": {
 			"label": "Ark-Application",
