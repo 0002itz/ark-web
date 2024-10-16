@@ -1,0 +1,125 @@
+Claro, aquí tienes ejemplos de pruebas (tests) para los cuatro componentes que has mencionado. Para las pruebas en React, generalmente se utilizan herramientas como **Jest** y **React Testing Library**. Aquí te dejo ejemplos básicos de cómo podrías estructurar las pruebas para cada componente.
+
+### 1. `Header.jsx`
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import Header from './Header';
+
+test('renders the header with title and subtitle', () => {
+    render(<Header />);
+    
+    const title = screen.getByText(/Alklines Circle/i);
+    const subtitle = screen.getByText(/catalogo digital/i);
+
+    expect(title).toBeInTheDocument();
+    expect(subtitle).toBeInTheDocument();
+});
+
+test('renders navigation links', () => {
+    render(<Header />);
+
+    const links = [
+        /Medicinas prehispánicas/i,
+        /Ceremonias/i,
+        /Contacto/i
+    ];
+
+    links.forEach(link => {
+        expect(screen.getByText(link)).toBeInTheDocument();
+    });
+});
+```
+
+### 2. `AlertMessage.jsx`
+
+```jsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import AlertMessage from './Alertmeseng';
+
+test('checkbox should be unchecked by default', () => {
+    render(<AlertMessage />);
+    const checkbox = screen.getByLabelText(/acepto el aviso legal/i);
+    expect(checkbox).not.toBeChecked();
+});
+
+test('shows alert when continuing without checking the box', () => {
+    // Mock the alert function
+    window.alert = jest.fn();
+
+    render(<AlertMessage />);
+    const button = screen.getByRole('button', { name: /continuar/i });
+    fireEvent.click(button);
+
+    expect(window.alert).toHaveBeenCalledWith("¡Debes aceptar el aviso legal para continuar!");
+});
+
+test('does not show alert when checkbox is checked', () => {
+    // Mock the alert function
+    window.alert = jest.fn();
+
+    render(<AlertMessage />);
+    const checkbox = screen.getByLabelText(/acepto el aviso legal/i);
+    fireEvent.click(checkbox); // Check the box
+    const button = screen.getByRole('button', { name: /continuar/i });
+    fireEvent.click(button);
+
+    expect(window.alert).toHaveBeenCalledWith("¡Continuando!");
+});
+```
+
+### 3. `HeaderButton.jsx`
+
+Para este componente, asumiremos que es un contenedor simple. Aquí tienes una prueba básica:
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import HeaderButton from './Headerboton';
+
+test('renders children correctly', () => {
+    render(
+        <HeaderButton>
+            <a href="/test">Test Link</a>
+        </HeaderButton>
+    );
+
+    const link = screen.getByText(/Test Link/i);
+    expect(link).toBeInTheDocument();
+});
+```
+
+### 4. `FooterButton.jsx` (asumiendo que es similar a HeaderButton)
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import FooterButton from './Footerbutton';
+
+test('renders children correctly', () => {
+    render(
+        <FooterButton>
+            <a href="/test">Footer Test Link</a>
+        </FooterButton>
+    );
+
+    const link = screen.getByText(/Footer Test Link/i);
+    expect(link).toBeInTheDocument();
+});
+```
+
+### Configuración de pruebas
+
+1. Asegúrate de tener **Jest** y **React Testing Library** instalados:
+   ```bash
+   npm install --save-dev @testing-library/react @testing-library/jest-dom
+   ```
+
+2. Crea un archivo de prueba para cada componente en la misma carpeta, con la extensión `.test.js`, por ejemplo: `Header.test.js`.
+
+3. Para ejecutar las pruebas, puedes usar:
+   ```bash
+   npm test
+   ```
+
+### Nota
+
+Los ejemplos de pruebas son básicos y pueden ser adaptados según la complejidad de tu aplicación y la lógica específica de cada componente. Si necesitas más detalles o ajustes, ¡házmelo saber!
