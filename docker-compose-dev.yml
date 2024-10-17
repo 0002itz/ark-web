@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  arkline-circle-con-dev:
+    image: ogtdocker/ark-img-dev:v.1.8
+    ports:
+      - "4321:80"
+    volumes:
+      - arkline-vol-dev:/path/app
+volumes:
+  arkline-vol-dev:
+
+
