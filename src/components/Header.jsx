@@ -1,6 +1,4 @@
-import React from 'react';
 import HeaderButton from "../components/Headerboton"; // Asegúrate de que el nombre sea correcto
-import AlertMessage from "../components/Alertmeseng.astro"; // Asegúrate de que el nombre sea correcto
 
 const Header = () => {
     return (

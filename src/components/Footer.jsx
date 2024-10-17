@@ -1,4 +1,3 @@
-import React from 'react';
 import FooterButton from "../components/Footerbutton";
 
 const Footer = () => {
