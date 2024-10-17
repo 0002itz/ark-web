@@ -1,11 +1,12 @@
 services:
   arkline-circle-con-dev:
-    image: ogtdocker/ark-img-dev:v.1.5
+    image: ogtdocker/ark-img-dev:v.1.8
     ports:
       - "4321:80"
     volumes:
-      - arkline-vol-dev:/path/app
+      - arkline-vol-dev:/app
 volumes:
   arkline-vol-dev:
+    device: .
 
 
