@@ -17,12 +17,12 @@ const { product_obj,imagePath} = Astro.props;
 const available = product_obj.available ? "Available" : "Out of sock"
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
-<a href={`/Product/${product_obj.product_name}`} class="flex flex-col rounded-lg border shadow-md bg-yellow-400  border-gray-700 hover:sacle-105 hover:border-gray-700 transition">
-    <picture class="flex justify-center p-4 md-5 rounded.lg ">
-        <Image src={images[imagePath]()} class="rounded-full" alt=`product name ${product_obj.product_name}` width={200} height={200} />
+<a href={`/Product/${product_obj.product_name}`} class="flex flex-col rounded-lg border shadow-md bg-yellow-400  border-gray-700 hover:scale-105 hover:border-gray-700 transition">
+    <picture class="flex justify-center p-4 md-5 rounded-lg ">
+        <Image src={images[imagePath]()} class="rounded-full" alt={product_obj.product_name} width={200} height={200} />
     </picture>
     <header class="p-3 flex-grow">
-        <h2 class="my-2 text-2xl font-blod tracking-tight text-white">
+        <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
             {product_obj.product_name}
         </h2>
         <span
@@ -36,6 +36,6 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
         >{available}</span>
 
         <p class="md-4 font-Light text-gray-400">
-            {product_obj.paragraph!= null && product_obj.paragraph?. length > 40 ? product_obj.paragraph.slice(0,100) + "..." : product_obj.paragraph}
+            {product_obj.paragraph != null && product_obj.paragraph.length > 40 ? product_obj.paragraph.slice(0, 100) + "..." : product_obj.paragraph}
         </p>
 </a>
