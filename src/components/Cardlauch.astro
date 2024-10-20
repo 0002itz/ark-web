@@ -25,22 +25,21 @@ const available = product_obj.available ? "Available" : "Out of sock"
     <picture class="flex justify-center p-4 md-5 rounded-lg ">
         <Image src={images[imagePath]()} class="rounded-full" alt={product_obj.product_name} width={200} height={200} />
     </picture>
-    <div >
-        <header class="p-3 flex-grow">
-            <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
-                {product_obj.product_name}
-            </h2>
-            <span
-            class:list={[
-                'text-xs font-semibold mr-2 px-2.5',
-                {
-                    "bg-green-400 text-grenn-900": product_obj.available,
-                    "bg-red-400 text-red-900": !product_obj.available
-                }
+    <header class="p-3 felx flex-nowrap">
+        <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
+            {product_obj.product_name}
+        </h2>
+        <span class:list={[
+            'text-xs font-semibold mr-2 px-2.5',
+            {
+                "bg-green-400 text-grenn-900": product_obj.available,
+                "bg-red-400 text-red-900": !product_obj.available
+            }
             ]}
-            >{available}</span>
-            <p class="md-4 font-Light text-gray-400">
-                {product_obj.paragraph != null && product_obj.paragraph.length > 40 ? product_obj.paragraph.slice(0, 100) + "..." : product_obj.paragraph}
-            </p>
-    </div>
+            >{available}
+        </span>
+        <p class="md-4 font-Light text-gray-400">
+            {product_obj.paragraph != null && product_obj.paragraph.length > 40 ? product_obj.paragraph.slice(0, 100) + "..." : product_obj.paragraph}
+        </p>
+    </header>
 </a>
