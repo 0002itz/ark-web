@@ -1,6 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
 import { Image } from 'astro:assets';
+import defaultImage from "../../assets/404.png"; 
+import melena from "../../assets/Melena de León.png";
+import cord from "../../assets/Cordyceps.png";
+import sananda from "../../assets/Sananga.png";
+import chaga from "../../assets/Chaga.png";
+import kambo from "../../assets/kambô.png";
+import xanga from "../../assets/Xanga.png";
+import bufo from "../../assets/Bufo alvarius.png";
 
 import { Herbs, Ceremonis } from "../../components/Products.astro";
 
@@ -26,13 +35,38 @@ const { post  } = Astro.props as Props;
 const available = post.available ? "Available" : "Out of sock";
 
 export const prerender = true;
+
+// Función para obtener la imagen según el nombre del producto
+const getImageSrc = async (productName:string) => {
+    switch (productName) {
+        case 'Melena de León':
+            return melena;
+        case 'Cordyceps':
+            return cord;
+        case 'Sananga':
+            return sananda;
+        case 'Chaga':
+            return chaga;
+        case 'kambô':
+            return kambo;
+        case 'Xanga':
+            return xanga;
+        case 'Bufo alvarius':
+            return bufo;
+        default:
+            console.warn('No se encontró imagen para:', productName);
+            return defaultImage; 
+    }
+};
+
+const imagproduct = await getImageSrc(product_name);
 ---
 
 <Layout title={product_name}>
     <a class="rounded-lg border shadow-md bg-yellow-400  border-gray-700  transition flex flex-col p-4">
     <article>
         <picture class="grid place-content-center">
-            <Image class="rounded-full w-52 h-auto" src=`/src/assets/${product_name}.png` alt={product_name} width={200} height={200}>
+            <Image class="rounded-full w-52 h-auto" src={imagproduct} alt={product_name} width={200} height={200}>
         </picture>
     </article>
     <header class="p-3 flex-grow">
@@ -55,4 +89,3 @@ export const prerender = true;
             {post.key_points}
         </p>
 </Layout>
-
