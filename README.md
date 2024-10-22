@@ -1,3 +1,9 @@
+Docker compose 
+    contenedores: 1
+    Nombres: arkline-circle-con-dev
+    Imagen : ogtdocker/ark-img-dev:v.2.3
+    Server: Node, apache
+
 # Astro Starter Kit: Basics
 
 ```sh
