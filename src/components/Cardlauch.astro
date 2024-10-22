@@ -30,7 +30,7 @@ const available = product_obj.available ? "Available" : "Out of sock"
             {product_obj.product_name}
         </h2>
         <span class:list={[
-            'text-xs font-semibold mr-2 px-2.5',
+            'text-xs font-semibold mr-2 px-2.5 rounded-lg',
             {
                 "bg-green-400 text-grenn-900": product_obj.available,
                 "bg-red-400 text-red-900": !product_obj.available

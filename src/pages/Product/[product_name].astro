@@ -73,7 +73,7 @@ const imagproduct = await getImageSrc(product_name);
         <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
             {product_name}
         </h2>
-        <span class:list={['text-xs font-semibold mr-2 px-2.5', { "bg-green-400 text-grenn-900": available, "bg-red-400 text-red-900": !available } ]}>
+        <span class:list={['text-xs font-semibold mr-2 px-2.5 rounded-lg', { "bg-green-400 text-grenn-900": available, "bg-red-400 text-red-900": !available } ]}>
             {available}
         </span>
         <h4 class="p-2 my-2 text-2xl font-bold tracking-tight text-white">
