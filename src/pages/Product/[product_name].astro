@@ -1,9 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro"
-import { Herbs, Ceremonis } from "../../components/Products.astro"
-import { Image } from 'astro:assets';
-export const prerender = true;
+import Layout from "../../layouts/Layout.astro";
+import Cardproductxl from "../../components/Cardproductxl.astro";
+
+import { Herbs, Ceremonis } from "../../components/Products.astro";
+
 import type { InferGetStaticParamsType, InferGetStaticPropsType,GetStaticPaths  } from 'astro';
+
+
 //    roting dinamico     y        paso de datos
 export const getStaticPaths = (async ()=>{ 
     const posts = [...Herbs,...Ceremonis]
@@ -21,39 +24,13 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;;
 const { product_name  } = Astro.params as Params;
 const { post  } = Astro.props as Props;
 
-const available = post.available ? "Available" : "Out of sock";
+
+
+export const prerender = true;
 ---
 
 <Layout title={product_name}>
-    <a
-    class="rounded-lg border shadow-md bg-yellow-400  border-gray-700
-    hover:sacle-105 hover:border-gray-700 transition flex 
-    flex-col p-4">
-
-    <article>
-        <picture class="grid place-content-center">
-            <Image class="rounded-full w-52 h-auto" src=`/src/assets/${product_name}.png` alt={product_name} width={200} height={200}>
-        </picture>
-    </article>
-
-    <header class="p-3 flex-grow">
-        <h2 class="my-2 text-2xl font-blod tracking-tight text-white">
-            {product_name}
-        </h2>
-        <span class:list={['text-xs font-semibold mr-2 px-2.5', { "bg-green-400 text-grenn-900": available, "bg-red-400 text-red-900": !available } ]}>
-            {available}
-        </span>
-        <h4 class="p-2 my-2 text-2xl font-blod tracking-tight text-white">
-            Que es?
-        </h4>
-        <p class="md-4 font-Light text-gray-400">
-            {post.paragraph}
-        </p>
-        <h4 class="p-2 my-2 text-2xl font-blod tracking-tight text-white">
-            Beneficios:
-        </h4>
-        <p class="md-4 font-Light text-gray-400">
-            {post.key_points}
-        </p>
+    <Cardproductxl 
+    imagePath=`/src/assets/${product_name}.png`
+    product_obj={post} />
 </Layout>
-

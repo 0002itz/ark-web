@@ -1,13 +1,11 @@
-import React from 'react';
 import HeaderButton from "../components/Headerboton"; // Asegúrate de que el nombre sea correcto
-import AlertMessage from "../components/Alertmeseng.astro"; // Asegúrate de que el nombre sea correcto
 
 const Header = () => {
     return (
         <header className="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
             <div className="mx-auto text-center mb-8 lg:mb-5">
                 <a href="/" className="mb-4 text-5xl tracking-tight font-extrabold text-black">
-                    Alklines Circle 🍄
+                    Alkaline Circle 🍄
                 </a>
             </div>
             <div className="text-center py-5">

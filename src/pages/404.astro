@@ -1,7 +1,17 @@
 ---
+import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
+import defaultImage from "../assets/404.png"; 
+
 ---
 
 <Layout title="404 Not Found">
-    Pagina no encontada.
+    <div class="grid col-2 justify-center p-4">
+        <div class="p-5">
+            <Image src={defaultImage} alt={"404"}width={200} height={200}/>
+        </div>
+        <div class="p-5">
+            Pagina no encontada.
+        </div>
+    </div>
 </Layout>
