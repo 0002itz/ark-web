@@ -1,8 +1,7 @@
-## Docker compose 
-    contenedores: 1
-    Nombres: arkline-circle-con-dev
-    Imagen : ogtdocker/ark-img-dev:v.2.3
-    Server: Node, apache
+## Info web page
+    web-name: Alkaline Circle
+    No docker
+    host: Hostinger
 
 # Astro Starter Kit: Basics
 
