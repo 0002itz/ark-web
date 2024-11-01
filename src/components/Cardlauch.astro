@@ -21,11 +21,11 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
 
 const available = product_obj.available ? "Available" : "Out of sock"
 ---
-<a href={`/Product/${product_obj.product_name}`} class="flex flex-col rounded-lg border shadow-md bg-yellow-400 border-gray-700 hover:scale-105 hover:border-gray-700 transition">
+<a href={`/Product/${product_obj.product_name}`} class="grid grid-col rounded-lg border shadow-md bg-yellow-400 border-gray-700 hover:scale-105 hover:border-gray-700 transition">
     <picture class="flex justify-center p-4 md-5 rounded-lg ">
-        <Image loading="eager" src={images[imagePath]()} class="rounded-full" alt={product_obj.product_name} width={200} height={200} />
+        <Image class="rounded-lg" loading="eager" src={images[imagePath]()} alt={product_obj.product_name} width={200} height={200} />
     </picture>
-    <header class="p-3 felx flex-nowrap">
+    <header class="p-3 felx flex-wrap">
         <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
             {product_obj.product_name}
         </h2>

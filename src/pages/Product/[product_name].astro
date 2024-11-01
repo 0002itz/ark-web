@@ -1,19 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
+import Cardlunchxl from "../../components/Cardlunchxl.astro";
 import { Image } from 'astro:assets';
-import defaultImage from "../../assets/404.png"; 
-import melena from "../../assets/Melena de León.png";
-import cord from "../../assets/Cordyceps.png";
-import sananda from "../../assets/Sananga.png";
-import chaga from "../../assets/Chaga.png";
-import kambo from "../../assets/kambô.png";
-import xanga from "../../assets/Xanga.png";
-import bufo from "../../assets/Bufo alvarius.png";
+
 
 import { Herbs, Ceremonis } from "../../components/Products.astro";
 
 import type { InferGetStaticParamsType, InferGetStaticPropsType,GetStaticPaths  } from 'astro';
+
 
 //    roting dinamico     y        paso de datos
 export const getStaticPaths = (async ()=>{ 
@@ -32,62 +26,13 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;;
 const { product_name  } = Astro.params as Params;
 const { post  } = Astro.props as Props;
 
-const available = post.available ? "Available" : "Out of sock";
+
 
 export const prerender = true;
-
-// Función para obtener la imagen según el nombre del producto
-const getImageSrc = async (productName:string) => {
-    switch (productName) {
-        case 'Melena de León':
-            return melena;
-        case 'Cordyceps':
-            return cord;
-        case 'Sananga':
-            return sananda;
-        case 'Chaga':
-            return chaga;
-        case 'kambô':
-            return kambo;
-        case 'Xanga':
-            return xanga;
-        case 'Bufo alvarius':
-            return bufo;
-        default:
-            console.warn('No se encontró imagen para:', productName);
-            return defaultImage; 
-    }
-};
-
-const imagproduct = await getImageSrc(product_name);
 ---
 
 <Layout title={product_name}>
-    <div class="rounded-lg border shadow-md bg-yellow-400  border-gray-700 flex flex-col p-4">
-        <div class="shrink-0">
-            <picture class="grid place-content-center">
-                <Image loading="eager"  class="rounded-full w-52 h-auto" src={imagproduct} alt={product_name} width={200} height={200}>
-            </picture>
-        </div>
-        <div class="p-3 flex-grow">
-            <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
-                {product_name}
-            </h2>
-            <span class:list={['text-xs font-semibold mr-2 px-2.5 rounded-lg', { "bg-green-400 text-grenn-900": available, "bg-red-400 text-red-900": !available } ]}>
-                {available}
-            </span>
-            <h4 class="p-2 my-2 text-2xl font-bold tracking-tight text-white">
-                Que es?
-            </h4>
-            <p class="md-4 font-Light text-gray-400">
-                {post.paragraph}
-            </p>
-            <h4 class="p-2 my-2 text-2xl font-bold tracking-tight text-white">
-                Beneficios:
-            </h4>
-            <p class="md-4 font-Light text-gray-400">
-                {post.key_points}
-            </p>
-        </div>
-    </div>
+    <Cardlunchxl 
+    imagePath=`/src/assets/${product_name}.png`
+    product_obj={post} />
 </Layout>
