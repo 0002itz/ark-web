@@ -1,8 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Cardlunchxl from "../../components/Cardlunchxl.astro";
-import { Image } from 'astro:assets';
-
+import Cardproductxl from "../../components/Cardproductxl.astro";
 
 import { Herbs, Ceremonis } from "../../components/Products.astro";
 
@@ -32,7 +30,7 @@ export const prerender = true;
 ---
 
 <Layout title={product_name}>
-    <Cardlunchxl 
+    <Cardproductxl 
     imagePath=`/src/assets/${product_name}.png`
     product_obj={post} />
 </Layout>
