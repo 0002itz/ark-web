@@ -21,6 +21,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
 
 const available = product_obj.available ? "Available" : "Out of sock"
 ---
+<meta charset="UTF-8" />
 <a href={`/Product/${product_obj.product_name}`} class="grid grid-col rounded-lg border shadow-md bg-yellow-400 border-gray-700 hover:scale-105 hover:border-gray-700 transition">
     <picture class="flex justify-center p-4 md-5 rounded-lg ">
         <Image class="rounded-lg" loading="eager" src={images[imagePath]()} alt={product_obj.product_name} width={200} height={200} />
